@@ -1,0 +1,299 @@
+/* .App {
+  text-align: center;
+} */
+
+/****************************** Login page *****************************/
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.background-image {
+  background-image: url("./images/abc.jpg");
+  background-size: cover;
+}
+
+.form-layout {
+  margin: 0 auto;
+  max-width: 400px;
+  width: 90%;
+  padding: 1rem 1rem;
+  padding-bottom: 0.8rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  height: 7rem;
+  width: 7rem;
+  margin-top: -4.8rem;
+  border-radius: 5rem;
+  margin-bottom: 1rem;
+}
+
+.logo-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-btn {
+  border: none !important ;
+  border-radius: 15px;
+  display: block;
+  margin: 15px auto;
+  padding: 15px 45px;
+  width: 100%;
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  opacity: 1;
+  text-align: center !important;
+  visibility: visible;
+  background-image: url("./images/abc.jpg");
+  background-size: cover;
+}
+
+.submit-btn:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.login-heading {
+  color: rgb(19, 61, 86);
+  display: block;
+}
+
+input[name="username"],
+input[name="password"] {
+  background: -webkit-linear-gradient(
+    top,
+    rgb(189, 187, 187) 0%,
+    rgb(206, 204, 204) 21%,
+    rgba(228, 228, 228, 1) 79%,
+    rgba(242, 242, 242, 1) 100%
+  );
+
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/****************************** Header component *************************/
+
+.navbar {
+  padding: 0 !important;
+}
+
+.header {
+  background-color: rgb(255, 255, 255);
+}
+
+.blog-logo {
+  height: 2.7rem;
+  width: 7.8rem;
+}
+
+.search-textbox {
+  height: 2.3rem !important;
+  width: 18rem !important;
+  background: -webkit-linear-gradient(
+    top,
+    rgb(238, 236, 236) 0%,
+    rgb(247, 245, 245) 21%,
+    rgb(245, 244, 244) 79%,
+    rgba(242, 242, 242, 1) 100%
+  );
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.1);
+}
+
+.login-user {
+  color: #1673e6 !important;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.logout-button {
+  background-color: #1673e6 !important;
+  border-radius: 1.1rem !important;
+  border: 0rem !important;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+  .search-textbox {
+    width: 16rem !important;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  .search-textbox {
+    width: 19.8rem !important;
+  }
+}
+
+@media only screen and (min-width: 425px) and (max-width: 767px) {
+  .search-textbox {
+    width: 23rem !important;
+  }
+}
+
+/**************************************** Home Page *****************************/
+
+.home-bg {
+  background-color: rgb(238, 240, 241);
+  padding-top: 1rem;
+  padding-bottom: 21rem;
+}
+
+.card {
+  width: 98%;
+  margin: 0rem 1rem;
+}
+
+.card-title {
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.card-title:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+/********************* Table *****************************/
+
+.create-button {
+  background-color: #1673e6 !important;
+
+  border: none !important;
+
+  /* display: inline-block !important; */
+  /* font-size: 1.1rem !important; */
+}
+
+.table-layout {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  /* font-size: 1.1rem; */
+  table-layout: fixed;
+  position: relative !important;
+}
+
+.table-heading {
+  border-top: 3px solid rgb(224, 223, 223);
+  border-bottom: 3px solid rgb(224, 223, 223);
+}
+
+/* th {
+  word-break: break-word;
+  word-wrap: break-word;
+  
+}*/
+
+td {
+  /* word-break: break-word;
+  word-wrap: break-word; */
+  vertical-align: middle;
+  width: 100% !important;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+  .table-layout {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .table-heading {
+    border-top: 1px solid rgb(224, 223, 223);
+    border-bottom: 1px solid rgb(224, 223, 223);
+  }
+  td {
+    padding-right: 3rem !important;
+  }
+  th {
+    padding-right: 3rem !important;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  .table-layout {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .table-heading {
+    border-top: 1px solid rgb(224, 223, 223);
+    border-bottom: 1px solid rgb(224, 223, 223);
+  }
+}
+
+@media only screen and (min-width: 425px) and (max-width: 767px) {
+  .table-layout {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .table-heading {
+    border-top: 1px solid rgb(224, 223, 223);
+    border-bottom: 1px solid rgb(224, 223, 223);
+  }
+}
+
+/***************************** SweetAlert Dialogbox ***********************/
+
+.sweet-warning {
+  background-color: rgb(220, 53, 69);
+  font-size: 1.4rem;
+}
+.sweet-warning:hover {
+  background-color: rgb(220, 53, 69) !important;
+}
+.sweet-cancel {
+  background-color: white;
+  border: 4px solid rgb(139, 195, 255, 0.4);
+  color: rgb(23, 162, 184);
+
+  text-decoration: underline;
+  font-size: 1.4rem;
+}
+.sweet-cancel:hover {
+  background-color: white !important;
+}
+
+.sweet-ok {
+  background-color: blue;
+  font-size: 1.4rem;
+}
+.sweet-ok:hover {
+  background-color: blue !important;
+}
+
+.swal-footer {
+  text-align: center;
+}
+.swal-text {
+  color: rgb(0, 0, 0, 0.6);
+  font-size: 1.2rem;
+}
+.swal-title {
+  color: rgb(0, 0, 0);
+  font-size: 2.1rem;
+}
+
+.div-line {
+  width: 100%;
+  /* line-height: 1.2em; */
+  /* height: 3.6em; */
+  /* background-color: gainsboro; */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
