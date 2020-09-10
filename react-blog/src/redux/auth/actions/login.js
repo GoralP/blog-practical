@@ -13,6 +13,8 @@ export const login = (identifier, password, history) => {
       .then((res) => {
         localStorage.setItem("token", res.data.jwt);
         localStorage.setItem("username", res.data.user.username);
+        localStorage.setItem("userid", res.data.user.id);
+
         dispatch({
           type: "LOGIN_FETCH_SUCCESS",
         });

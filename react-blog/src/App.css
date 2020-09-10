@@ -288,12 +288,12 @@ td {
 }
 
 .div-line {
-  width: 100%;
+  /* width: 100%; */
   /* line-height: 1.2em; */
   /* height: 3.6em; */
   /* background-color: gainsboro; */
   overflow: hidden;
   display: -webkit-box;
-  -webkit-box-orient: vertical;
+  /* -webkit-box-orient: vertical; */
   -webkit-line-clamp: 3;
 }

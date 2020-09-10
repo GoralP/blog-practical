@@ -46,7 +46,7 @@ const Posts = () => {
               <th>Title</th>
               <th>Slug</th>
               <th>Content</th>
-              {/* <th>Username</th> */}
+              <th>Username</th>
               <th>Categories</th>
               <th>Tags</th>
               <th>Created At</th>
@@ -72,7 +72,7 @@ const Posts = () => {
                         <td>{item.title}</td>
                         <td>{item.slug}</td>
                         <td>{item.content}</td>
-                        {/* <td>{item.user.username}</td> */}
+                        <td>{item.user && item.user.username}</td>
                         <td>
                           {item.categories.map((catagory) => (
                             <>{catagory.title}</>

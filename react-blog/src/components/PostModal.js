@@ -23,8 +23,8 @@ const signupSchema = yup.object().shape({
   title: yup.string().required("Title is a required field."),
   slug: yup.string().required("Slug is a required field."),
   content: yup.string().required("Content is a required field."),
-  category: yup.string().required("Categories is a required field."),
-  tag: yup.string().required("Tags is a required field."),
+  // category: yup.string().required("Categories is a required field."),
+  // tag: yup.string().required("Tags is a required field."),
 });
 
 const PostModal = ({ modal, setModal, toggle, action }) => {
@@ -59,10 +59,13 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
     tags !== null &&
     tags.map((item) => ({ id: item.id, value: item.title, label: item.title }));
 
+  const userid = localStorage.getItem("userid");
+
   const onSubmit = (data) => {
-    console.log(data);
+    const user = userid;
+    const newUser = { ...data, user };
     action === "create"
-      ? dispatch(createPost(data, setModal))
+      ? dispatch(createPost(newUser, setModal))
       : dispatch(updatePost(data, post.id, setModal));
   };
 
@@ -138,16 +141,16 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
                 as={Select}
                 options={categoryOption}
                 control={control}
-                name="category"
+                name="categories"
                 isMulti
                 defaultValue={
-                  action === "edit" ? post !== null && post.category : ""
+                  action === "edit" ? post !== null && post.categories : ""
                 }
                 ref={register}
-                className={errors && errors.category ? "is-invalid" : ""}
+                className={errors && errors.categories ? "is-invalid" : ""}
               ></Controller>
-              {errors && errors.category && (
-                <span className="text-danger">{errors.category.message}</span>
+              {errors && errors.categories && (
+                <span className="text-danger">{errors.categories.message}</span>
               )}
             </FormGroup>
 
@@ -157,16 +160,16 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
                 as={Select}
                 options={tagOption}
                 control={control}
-                name="tag"
+                name="tags"
                 isMulti
                 defaultValue={
-                  action === "edit" ? post !== null && post.tag : ""
+                  action === "edit" ? post !== null && post.tags : ""
                 }
                 ref={register}
-                className={errors && errors.tag ? "is-invalid" : ""}
+                className={errors && errors.tags ? "is-invalid" : ""}
               ></Controller>
-              {errors && errors.tag && (
-                <span className="text-danger">{errors.tag.message}</span>
+              {errors && errors.tags && (
+                <span className="text-danger">{errors.tags.message}</span>
               )}
             </FormGroup>
           </ModalBody>
