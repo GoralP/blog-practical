@@ -6,21 +6,28 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  NavLink,
   NavbarText,
   Button,
   NavItem,
-  NavLink,
-  Input,
+  Dropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
 } from "reactstrap";
 import bloglogo from "../images/blog_logo.PNG";
 import { useHistory } from "react-router-dom";
-import { FaUser, FaBell, FaSignOutAlt } from "react-icons/fa";
+import { FaList, FaTags } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const history = useHistory();
 
   const token = localStorage.getItem("token");
@@ -35,52 +42,71 @@ const Header = () => {
   };
 
   return (
-    <Container fluid className="shadow">
-      <Navbar className="header" light expand="md">
+    <Container fluid className="shadow ">
+      <Navbar className="nav-menu" light expand="md">
         <NavbarBrand>
           <img className="blog-logo" src={bloglogo} alt="logo" />
         </NavbarBrand>
 
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="mr-auto">
             <NavItem>
-              <Input
-                type="text"
-                placeholder="Search..."
-                className="search-textbox"
-              ></Input>
+              <NavLink>
+                <Link className="navbar-item" to="/admin/tags">
+                  <FaTags />
+                  Tags
+                </Link>
+              </NavLink>
             </NavItem>
-            <NavbarText>
-              <Link to="/admin/tags">
-                <NavItem>Tags</NavItem>
-              </Link>
-            </NavbarText>
-            <NavbarText>
-              <Link to="/admin/categories">
-                <NavItem>Categories</NavItem>
-              </Link>
-            </NavbarText>
-            <NavbarText>
-              <Link to="/admin/posts">
-                <NavItem>Posts</NavItem>
-              </Link>
-            </NavbarText>
+            <NavItem>
+              <NavLink>
+                <Link className="navbar-item" to="/admin/categories">
+                  <FaList className="icon-category" />
+                  Categories
+                </Link>
+              </NavLink>
+            </NavItem>
           </Nav>
 
-          <NavbarText className="user pr-2 login-user">
-            {token ? <div>{user}</div> : ""}
-          </NavbarText>
+          <NavbarText>
+            {token ? (
+              <Dropdown
+                className="user pr-2 login-user"
+                isOpen={dropdownOpen}
+                toggle={toggleDropdown}
+              >
+                <DropdownToggle nav caret className="login-user-name">
+                  {user}
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem header>
+                    <Link to="/admin/tags">
+                      <NavItem>Tags</NavItem>
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link to="/admin/categories">
+                      <NavItem>Categories</NavItem>
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link to="/admin/posts">
+                      <NavItem>Posts</NavItem>
+                    </Link>
+                  </DropdownItem>
 
-          {token ? (
-            <Button className="logout-button" onClick={logout}>
-              <FaSignOutAlt />
-            </Button>
-          ) : (
-            <Link to="/login">
-              <Button>Sign in</Button>
-            </Link>
-          )}
+                  <DropdownItem>
+                    <Link onClick={logout}>Log out</Link>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            ) : (
+              <Link to="/login">
+                <Button>Sign in</Button>
+              </Link>
+            )}
+          </NavbarText>
         </Collapse>
       </Navbar>
     </Container>

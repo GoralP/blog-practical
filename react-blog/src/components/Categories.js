@@ -9,8 +9,9 @@ import {
 } from "../redux/categories/actions";
 import { FaTrashAlt, FaPencilAlt, FaBlackTie } from "react-icons/fa";
 import Moment from "react-moment";
-import SweetAlert from "react-bootstrap-sweetalert";
+
 import swal from "sweetalert";
+import { Spin } from "antd";
 
 const Categories = () => {
   const [modal, setModal] = useState(false);
@@ -77,21 +78,18 @@ const Categories = () => {
         <Row className="shadow mx-1  bg-white">
           <Col xs="12">
             <Button
-              color="info"
               onClick={() => {
                 toggle();
                 setAction("create");
               }}
-              className="mt-3"
+              className="mt-3 create-button"
             >
               Create Category
             </Button>
           </Col>
           <Col xs="12">
             {loading ? (
-              <tr>
-                <td colspan="6">Loading...</td>
-              </tr>
+              <Spin size="large" className="mt-3" />
             ) : (
               <Table className="mt-3 border table-layout">
                 <thead>

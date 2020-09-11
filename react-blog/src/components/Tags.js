@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { allTags, getSingleTag, deleteTag } from "../redux/tags/actions";
 import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 import Moment from "react-moment";
-import SweetAlert from "react-bootstrap-sweetalert";
+
 import { Spin } from "antd";
 
 const Tags = () => {
@@ -21,8 +21,6 @@ const Tags = () => {
     tags: state.tagReducers.allTags.tags,
   }));
 
-  
-
   useEffect(() => {
     dispatch(allTags());
   }, [dispatch]);
@@ -35,6 +33,7 @@ const Tags = () => {
         <Row className="shadow mx-1  bg-white">
           <Col xs="12">
             <Button
+              color="primary"
               onClick={() => {
                 toggle();
                 setAction("create");
@@ -46,11 +45,8 @@ const Tags = () => {
           </Col>
           <Col xs="12">
             {loading ? (
-              <tr>
-                <td colspan="6">Loading...</td>
-              </tr>
+              <Spin size="large" className="mt-3" />
             ) : (
-              // <Spin size="large" className="mt-3" />
               <Table className="mt-3 border table-layout">
                 <thead className="table-heading">
                   <tr>

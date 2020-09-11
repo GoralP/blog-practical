@@ -144,7 +144,14 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
                 name="categories"
                 isMulti
                 defaultValue={
-                  action === "edit" ? post !== null && post.categories : ""
+                  action === "edit"
+                    ? post !== null &&
+                      post.categories.map((category) => ({
+                        id: category.id,
+                        label: category.title,
+                        value: category.title,
+                      }))
+                    : ""
                 }
                 ref={register}
                 className={errors && errors.categories ? "is-invalid" : ""}
@@ -163,7 +170,14 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
                 name="tags"
                 isMulti
                 defaultValue={
-                  action === "edit" ? post !== null && post.tags : ""
+                  action === "edit"
+                    ? post !== null &&
+                      post.tags.map((tag) => ({
+                        id: tag.id,
+                        label: tag.title,
+                        value: tag.title,
+                      }))
+                    : ""
                 }
                 ref={register}
                 className={errors && errors.tags ? "is-invalid" : ""}

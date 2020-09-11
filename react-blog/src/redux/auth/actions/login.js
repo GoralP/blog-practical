@@ -26,11 +26,13 @@ export const login = (identifier, password, history) => {
       })
       .catch((error) => {
         dispatch({ type: "LOGIN_FETCH_FAILURE", message: error.message });
-        toast.error("error.response.data.message[0].messages[0].message", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000,
-        });
-        console.log(error.response.data);
+        error.response.data.message.map((error) =>
+          error.messages.map((item) =>
+            toast.error(item.message, {
+              position: toast.POSITION.TOP_CENTER,
+            })
+          )
+        );
       });
   };
 };
