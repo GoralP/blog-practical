@@ -21,7 +21,7 @@ function App() {
         <Route path="/" component={Home} exact={true} />
         <Route path="/login" component={Login} exact={true} />
         <Route path="/registration" component={Registration} exact={true} />
-        <Route path="/:id" component={Singlepost} exact={true} />
+        <Route path="/:slug-:id" component={Singlepost} exact={true} />
 
         {/* <PrivateRoute path="/dashboard" component={Dashboard}></PrivateRoute> */}
       </Switch>

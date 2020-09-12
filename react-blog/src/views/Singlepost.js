@@ -14,6 +14,7 @@ import { getSinglePost } from "../redux/posts/actions";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 
 const SinglePost = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const SinglePost = () => {
     <>
       <Header></Header>
 
-      <Container>
+      <Container className="mt-3">
         <div>
           {loading ? (
             <div>Loading...</div>
@@ -41,7 +42,9 @@ const SinglePost = () => {
             <>
               {post !== null && (
                 <Row>
-                  <Link to="/">Back to home</Link>
+                  <Link to="/">
+                    <FaHome className="home-icon" />
+                  </Link>
                   <Card className="card-block">
                     <CardBody>
                       <CardTitle>{post.title}</CardTitle>

@@ -42,6 +42,7 @@ const Home = () => {
         <FormGroup>
           <Controller
             as={Input}
+            id="user"
             control={control}
             name="username"
             type="text"
@@ -58,6 +59,7 @@ const Home = () => {
         <FormGroup className="">
           <Controller
             as={Input}
+            id="pwd"
             control={control}
             name="password"
             type="password"
