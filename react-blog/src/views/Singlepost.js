@@ -5,8 +5,10 @@ import {
   CardText,
   CardBody,
   CardTitle,
+  CardImg,
   Row,
   Button,
+  Tooltip,
 } from "reactstrap";
 import { Header } from "../components";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,9 +17,15 @@ import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { FaList, FaTags } from "react-icons/fa";
+import { Spin } from "antd";
 
 const SinglePost = () => {
   const dispatch = useDispatch();
+
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+
+  const toggle = () => setTooltipOpen(!tooltipOpen);
 
   const { id } = useParams();
 
@@ -34,50 +42,77 @@ const SinglePost = () => {
     <>
       <Header></Header>
 
-      <Container className="mt-3">
-        <div>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <>
-              {post !== null && (
-                <Row>
-                  <Link to="/">
-                    <FaHome className="home-icon" />
-                  </Link>
-                  <Card className="card-block">
-                    <CardBody>
-                      <CardTitle>{post.title}</CardTitle>
+      <Container className="home-bg " fluid={true}>
+        <Container>
+          <Row className="px-3 py-4 bg-white">
+            {loading ? (
+              <Spin size="large" className="mt-3" />
+            ) : (
+              <>
+                {post !== null && (
+                  <>
+                    <Link to="/">
+                      <FaHome id="hometooltip" className="home-icon" />
+                      <Tooltip
+                        placement="bottom"
+                        isOpen={tooltipOpen}
+                        toggle={toggle}
+                        target="hometooltip"
+                      >
+                        Home
+                      </Tooltip>
+                    </Link>
 
-                      <CardText className="text-secondary card-text">
-                        <Moment
-                          format="MMMM DD, YYYY"
-                          className="font-weight-bold"
-                        >
-                          {post.created_at}
-                        </Moment>
-                      </CardText>
-                      <CardText className="card-text">
-                        {post.created_by}
-                      </CardText>
-                      <CardText className="card-text">
-                        {post.categories.map((catagory) => (
-                          <>{catagory.title}</>
-                        ))}
-                      </CardText>
-                      <CardText className="card-text">
-                        {post.tags.map((catagory) => (
-                          <>{catagory.title}</>
-                        ))}
-                      </CardText>
-                      <CardText className="card-text">{post.content}</CardText>
-                    </CardBody>
-                  </Card>
-                </Row>
-              )}
-            </>
-          )}
-        </div>
+                    <Card className="shadow mt-3 single-post-card">
+                      <CardBody>
+                        <CardTitle className="single-blog-title text-info">
+                          {post.title}
+                        </CardTitle>
+                        <CardText>
+                          <FaTags />
+                          Tags :
+                          {post.tags.map((tag) => (
+                            <span className="tags-button bg-info font-weight-bold">
+                              #{tag.title}
+                            </span>
+                          ))}
+                          <FaList className="ml-1" /> Categories :
+                          {post.categories.map((post) => (
+                            <span className="tags-button bg-info font-weight-bold">
+                              #{post.title}
+                            </span>
+                          ))}
+                        </CardText>
+                        <CardText>
+                          by
+                          <span className="font-weight-bold ml-1">
+                            {post.user !== null && post.user.username}
+                          </span>
+                          <Moment
+                            format="MMM DD, YYYY"
+                            className="text-secondary ml-3"
+                          >
+                            {post.created_at}
+                          </Moment>
+                        </CardText>
+                        <CardImg
+                          className="home-card-image"
+                          src={
+                            post.featured_media &&
+                            `https://infblogdemo.herokuapp.com${post.featured_media.url}`
+                          }
+                        ></CardImg>
+                        <CardText className="card-text mt-2">
+                          {post.content}
+                        </CardText>
+                      </CardBody>
+                    </Card>
+                  </>
+                )}
+              </>
+            )}
+          </Row>
+        </Container>
       </Container>
     </>
   );

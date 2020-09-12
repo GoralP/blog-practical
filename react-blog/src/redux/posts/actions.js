@@ -8,8 +8,7 @@ export const createPost = (data, setModal) => {
     dispatch({ type: "CREATE_POST_PENDING" });
 
     axios
-      .post("https://infblogdemo.herokuapp.com/posts", data, 
-      {
+      .post("https://infblogdemo.herokuapp.com/posts", data, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -87,10 +86,6 @@ export const deletePost = (id) => {
       .then((res) => {
         dispatch({ type: "DELETE_POST_SUCCESS" });
         dispatch(allPosts());
-        toast.success("Deleted successfully!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 7000,
-        });
       })
       .catch((error) => {
         dispatch({ type: "DELETE_POST_FAILURE", message: error.message });

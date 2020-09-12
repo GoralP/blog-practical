@@ -91,10 +91,6 @@ export const deleteTag = (id) => {
       .then((res) => {
         dispatch({ type: "DELETE_TAG_SUCCESS" });
         dispatch(allTags());
-        toast.success("Deleted successfully!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 7000,
-        });
       })
       .catch((error) => {
         dispatch({ type: "DELETE_TAG_FAILURE", message: error.message });

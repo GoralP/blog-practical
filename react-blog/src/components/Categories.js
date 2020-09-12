@@ -115,12 +115,12 @@ const Categories = () => {
                           <td>{item.slug}</td>
                           <td>{item.description}</td>
                           <td>
-                            <Moment format="MMMM DD, YYYY">
+                            <Moment format="MMM DD, YYYY">
                               {item.created_at}
                             </Moment>
                           </td>
                           <td>
-                            <Moment format="MMMM DD, YYYY">
+                            <Moment format="MMM DD, YYYY">
                               {item.updated_at}
                             </Moment>
                           </td>

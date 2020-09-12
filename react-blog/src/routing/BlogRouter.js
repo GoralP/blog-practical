@@ -3,7 +3,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Home, Login, Registration, Singlepost } from "../views";
 // import Registration from "../view/Registration";
 import "react-toastify/dist/ReactToastify.css";
-import { Tags, Categories, Posts, PrivateRouter } from "../components";
+import {
+  Tags,
+  Categories,
+  Posts,
+  PrivateRouter,
+  TagsTitle,
+  CategoriesTitle,
+} from "../components";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -18,6 +25,8 @@ function App() {
           exact={true}
         />
         <PrivateRouter path="/admin/posts" component={Posts} exact={true} />
+        <Route path="/tag" component={TagsTitle} exact={true} />
+        <Route path="/category" component={CategoriesTitle} exact={true} />
         <Route path="/" component={Home} exact={true} />
         <Route path="/login" component={Login} exact={true} />
         <Route path="/registration" component={Registration} exact={true} />

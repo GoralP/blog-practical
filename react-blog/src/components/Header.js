@@ -17,7 +17,7 @@ import {
 } from "reactstrap";
 import bloglogo from "../images/blog_logo.PNG";
 import { useHistory } from "react-router-dom";
-import { FaList, FaTags } from "react-icons/fa";
+import { FaList, FaTags, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -43,27 +43,35 @@ const Header = () => {
 
   return (
     <Container fluid className="shadow ">
-      <Navbar className="nav-menu" light expand="md">
+      <Navbar className="nav-menu"  light expand="md">
         <NavbarBrand>
           <img className="blog-logo" src={bloglogo} alt="logo" />
         </NavbarBrand>
 
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto">
+          <Nav className="mr-auto ">
             <NavItem>
               <NavLink>
-                <Link className="navbar-item" to="/admin/tags">
-                  <FaTags />
-                  Tags
+                <Link className="navbar-item" to="/tag">
+                  <FaHome className="mr-1 icon-home" />
+                  HOME
                 </Link>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink>
-                <Link className="navbar-item" to="/admin/categories">
+                <Link className="navbar-item" to="/tag">
+                  <FaTags />
+                  TAGS
+                </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link className="navbar-item" to="/category">
                   <FaList className="icon-category" />
-                  Categories
+                  CATEGORIES
                 </Link>
               </NavLink>
             </NavItem>

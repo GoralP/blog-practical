@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Container, Row } from "reactstrap";
+import { Table, Button, Container, Row, Col } from "reactstrap";
 import { Header, PostModal } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allPosts, getSinglePost, deletePost } from "../redux/posts/actions";
 import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 import Moment from "react-moment";
+import swal from "sweetalert";
 import { Spin } from "antd";
 
 const Posts = () => {
@@ -24,43 +25,84 @@ const Posts = () => {
     dispatch(allPosts());
   }, [dispatch]);
 
+  const removePost = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this record file! !",
+      icon: "warning",
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+      buttons: {
+        no: {
+          text: "Cancel",
+          value: "no",
+          className: "sweet-cancel btn-center",
+        },
+        yes: {
+          text: "Yes, delete it!",
+          value: "yes",
+          className: "sweet-warning btn-center",
+        },
+      },
+    }).then((value) => {
+      if (value === "yes") {
+        dispatch(deletePost(id));
+        swal({
+          title: "Deleted!",
+          text: "Your record has been deleted.",
+          icon: "success",
+          closeOnClickOutside: false,
+          closeOnEsc: false,
+          buttons: {
+            ok: {
+              text: "Ok",
+              className: "sweet-ok swal-footer",
+            },
+          },
+        });
+      }
+      return false;
+    });
+  };
+
   return (
     <>
       <Header></Header>
 
       <Container fluid className="home-bg">
         <Row className="shadow mx-1  bg-white">
-          <Button
-            color="info"
-            onClick={() => {
-              toggle();
-              setAction("create");
-            }}
-            className="mt-3 create-button"
-          >
-            Create Post
-          </Button>
+          <Col xs="12">
+            <Button
+              color="primary"
+              onClick={() => {
+                toggle();
+                setAction("create");
+              }}
+              className="mt-3 create-button"
+            >
+              Create Post
+            </Button>
+          </Col>
+          <Col xs="12">
+            {loading ? (
+              <Spin size="large" className="mt-3" />
+            ) : (
+              <Table className="mt-3 border table-layout">
+                <thead>
+                  <tr className="table-heading">
+                    <th>Title</th>
+                    <th>Slug</th>
+                    <th>Content</th>
+                    <th>Username</th>
+                    <th>Categories</th>
+                    <th>Tags</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
 
-          <Table className="mt-3 border table-layout">
-            <thead>
-              <tr className="table-heading">
-                <th>Title</th>
-                <th>Slug</th>
-                <th>Content</th>
-                <th>Username</th>
-                <th>Categories</th>
-                <th>Tags</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-
-            <tbody className="">
-              {loading ? (
-                <Spin size="large" className="mt-3" />
-              ) : (
-                <>
+                <tbody className="">
                   {posts !== null &&
                     posts
                       .sort((a, b) =>
@@ -83,22 +125,18 @@ const Posts = () => {
                             ))}
                           </td>
                           <td>
-                            <Moment format="MMMM DD, YYYY">
+                            <Moment format="MMM DD, YYYY">
                               {item.created_at}
                             </Moment>
                           </td>
                           <td>
-                            <Moment format="MMMM DD, YYYY">
+                            <Moment format="MMM DD, YYYY">
                               {item.updated_at}
                             </Moment>
                           </td>
 
                           <td>
-                            <FaTrashAlt
-                              onClick={() => {
-                                dispatch(deletePost(item.id));
-                              }}
-                            />
+                            <FaTrashAlt onClick={() => removePost(item.id)} />
 
                             <FaPencilAlt
                               className="ml-3"
@@ -111,10 +149,10 @@ const Posts = () => {
                           </td>
                         </tr>
                       ))}
-                </>
-              )}
-            </tbody>
-          </Table>
+                </tbody>
+              </Table>
+            )}
+          </Col>
 
           {modal && (
             <PostModal

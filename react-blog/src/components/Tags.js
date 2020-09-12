@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Container, Row, Card, Col } from "reactstrap";
+import { Table, Button, Container, Row, Col, Tooltip } from "reactstrap";
 import { Header, TagsModal } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allTags, getSingleTag, deleteTag } from "../redux/tags/actions";
 import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 import Moment from "react-moment";
-
+import swal from "sweetalert";
 import { Spin } from "antd";
 
 const Tags = () => {
@@ -24,6 +24,46 @@ const Tags = () => {
   useEffect(() => {
     dispatch(allTags());
   }, [dispatch]);
+
+  const removeTag = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to recover this record file! !",
+      icon: "warning",
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+      buttons: {
+        no: {
+          text: "Cancel",
+          value: "no",
+          className: "sweet-cancel btn-center",
+        },
+        yes: {
+          text: "Yes, delete it!",
+          value: "yes",
+          className: "sweet-warning btn-center",
+        },
+      },
+    }).then((value) => {
+      if (value === "yes") {
+        dispatch(deleteTag(id));
+        swal({
+          title: "Deleted!",
+          text: "Your record has been deleted.",
+          icon: "success",
+          closeOnClickOutside: false,
+          closeOnEsc: false,
+          buttons: {
+            ok: {
+              text: "Ok",
+              className: "sweet-ok swal-footer",
+            },
+          },
+        });
+      }
+      return false;
+    });
+  };
 
   return (
     <>
@@ -71,23 +111,18 @@ const Tags = () => {
                           <td>{item.slug}</td>
                           <td>{item.description}</td>
                           <td>
-                            <Moment format="MMMM DD, YYYY">
+                            <Moment format="MMM DD, YYYY">
                               {item.created_at}
                             </Moment>
                           </td>
                           <td>
-                            <Moment format="MMMM DD, YYYY">
+                            <Moment format="MMM DD, YYYY">
                               {item.updated_at}
                             </Moment>
                           </td>
 
                           <td>
-                            <FaTrashAlt
-                              onClick={() => {
-                                dispatch(deleteTag(item.id));
-                              }}
-                            />
-
+                            <FaTrashAlt onClick={() => removeTag(item.id)} />
                             <FaPencilAlt
                               className="ml-3"
                               onClick={() => {

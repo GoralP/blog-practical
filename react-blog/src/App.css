@@ -1,11 +1,11 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap");
 
 .App {
   text-align: center;
 }
 body {
-  /* font-family: "Source Sans Pro", sans-serif !important; */
-  /* background-color: rgb(15, 166, 241); */
+  font-family: "PT Serif", serif !important;
+  font-size: 1rem !important;
 }
 /****************************** Login page *****************************/
 
@@ -100,6 +100,12 @@ input[id="pwd"] {
 }
 
 .icon-category {
+  height: 0.8rem;
+  width: 0.8rem;
+  margin-right: 0.3rem;
+}
+
+.icon-home {
   height: 1rem;
   width: 1rem;
   margin-right: 0.3rem;
@@ -112,7 +118,7 @@ input[id="pwd"] {
 }
 .nav-menu {
   background-color: rgb(255, 255, 255);
-  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .blog-logo {
@@ -123,7 +129,7 @@ input[id="pwd"] {
 .login-user-name {
   color: white !important;
   background-color: rgb(0, 123, 255);
-  font-size: 1.1rem;
+  font-size: 1.1rem !important;
   font-weight: 600;
 }
 
@@ -136,7 +142,7 @@ input[id="pwd"] {
 }
 
 .card-title-size {
-  font-size: 1.5rem;
+  font-size: 1.8rem !important;
 }
 
 .card {
@@ -144,7 +150,7 @@ input[id="pwd"] {
   padding: 1.5rem 0rem;
 }
 
-.card-image {
+.home-card-image {
   height: 12rem;
   width: 13rem;
   padding: 0.3rem 0.3rem;
@@ -152,8 +158,17 @@ input[id="pwd"] {
   border-radius: 0.2rem;
 }
 
-.card-image:hover {
+.home-card-image:hover {
   border: 1.5px solid rgb(0, 123, 255, 0.5);
+}
+
+.line-clamp {
+  overflow: hidden;
+  width: 70%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
 }
 
 .read-more-button {
@@ -181,12 +196,74 @@ input[id="pwd"] {
   border-radius: 0.2rem;
 }
 
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+  .home-card-image {
+    height: 15rem;
+    width: 18rem;
+  }
+  .line-clamp {
+    width: 99%;
+    margin-top: 0.5rem;
+  }
+}
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  .home-card-image {
+    height: 15rem;
+    width: 21.4rem;
+  }
+  .line-clamp {
+    width: 99%;
+    margin-top: 0.5rem;
+  }
+}
+@media only screen and (min-width: 425px) and (max-width: 767px) {
+  .home-card-image {
+    height: 15rem;
+    width: 24.3rem;
+  }
+  .line-clamp {
+    width: 99%;
+    margin-top: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .line-clamp {
+    margin-left: 7rem;
+    width: 80%;
+  }
+  .read-more-button {
+    margin-left: 7rem;
+  }
+}
+
 /*************************** Singlepost page ****************/
 
 .home-icon {
   height: 2rem;
   width: 2rem;
-  color: black;
+}
+
+.single-blog-title {
+  font-size: 2rem !important;
+}
+
+.single-post-card {
+  width: 100%;
+}
+
+/************************** TagsTitle page ******************/
+
+.tags-title-button {
+  background-image: linear-gradient(#3879ab, #497fa8);
+  border: none !important;
+  margin-left: 0.3rem;
+  color: #ffda5d !important;
+  font-weight: bold !important;
+}
+
+.tags-title-container {
+  padding: 2rem 0;
 }
 
 /********************* Table *****************************/
@@ -211,6 +288,8 @@ input[id="pwd"] {
 }
 
 td {
+  /* word-wrap: break-word;
+  word-break: break-all; */
   vertical-align: middle;
   width: 100% !important;
 }
@@ -274,7 +353,7 @@ td {
   border: 4px solid rgb(139, 195, 255, 0.4);
   color: rgb(23, 162, 184);
   text-decoration: underline;
-  font-size: 1.4rem;
+  font-size: 1.4rem !important;
 }
 .sweet-cancel:hover {
   background-color: white !important;
@@ -282,7 +361,7 @@ td {
 
 .sweet-ok {
   background-color: blue;
-  font-size: 1.4rem;
+  font-size: 1.4rem !important;
 }
 .sweet-ok:hover {
   background-color: blue !important;
@@ -293,18 +372,11 @@ td {
 }
 .swal-text {
   color: rgb(0, 0, 0, 0.6);
-  font-size: 1.2rem;
+  font-size: 1.2rem !important;
 }
 .swal-title {
   color: rgb(0, 0, 0);
-  font-size: 2.1rem;
+  font-size: 2.1rem !important;
 }
 
-.line-clamp {
-  overflow: hidden;
-  width: 70%;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  text-overflow: ellipsis;
-}
+/************************** Tooltip Text ****************************/

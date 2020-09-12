@@ -37,8 +37,6 @@ const Home = () => {
       <Header></Header>
 
       <Container className="home-bg " fluid={true}>
-        {/* <Row className="mt-3"> */}
-        {/* <img className="" src={blogs} alt="logo" /> */}
         {loading ? (
           <Spin size="large" className="mt-3" />
         ) : (
@@ -51,23 +49,24 @@ const Home = () => {
                 .map((item) => (
                   <Row className="card">
                     <Col
-                      xs="12"
+                      sm="12"
                       className="text-primary font-weight-bold card-title-size"
                     >
                       {item.title}
                     </Col>
-                    <Col xs="12" className="my-2">
+                    <Col sm="12" className="my-2">
                       <Row>
                         <Col sm="2">
-                          {/* <img className="card-image" src={blogs} alt="logo" /> */}
                           <img
-                            className="card-image"
+                            // alt="Blog Image"
+                            className="home-card-image"
                             src={
                               item.featured_media &&
                               `https://infblogdemo.herokuapp.com${item.featured_media.url}`
                             }
                           />
                         </Col>
+
                         <Col sm="9">
                           <p className="line-clamp "> {item.content}</p>
 
@@ -82,7 +81,7 @@ const Home = () => {
                         </Col>
                       </Row>
                     </Col>
-                    <Col xs="12">
+                    <Col sm="12">
                       <FaUser /> by
                       <span className="text-info mx-1">
                         {item.user && item.user.username}
@@ -106,56 +105,9 @@ const Home = () => {
                       ))}
                     </Col>
                   </Row>
-
-                  // <Card className="card shadow mt-1">
-                  //   <CardBody>
-                  //     <Link to={`${item.id}`}>
-                  //       <CardTitle>Title : {item.title}</CardTitle>
-                  //     </Link>
-                  //     <CardText className="card-text">
-                  //       slug:{item.slug}
-                  //     </CardText>
-                  //     <CardText>{item.user && item.user.username}</CardText>
-                  //     <CardText className="text-secondary card-text">
-                  //       create:
-                  // <Moment
-                  //   format="MMMM DD, YYYY"
-                  //   className="font-weight-bold"
-                  // >
-                  //   {item.created_at}
-                  // </Moment>
-                  //     </CardText>
-                  //     <CardText className="text-secondary card-text">
-                  //       update:
-                  //       <Moment
-                  //         format="MMMM DD, YYYY"
-                  //         className="font-weight-bold"
-                  //       >
-                  //         {item.updated_at}
-                  //       </Moment>
-                  //     </CardText>
-
-                  //     <CardText className="text-secondary card-text">
-                  //       category:
-                  //       {item.categories.map((catagory) => (
-                  //         <>{catagory.title}</>
-                  //       ))}
-                  //     </CardText>
-
-                  //     <CardText className="card-text">
-                  // {item.tags.map((tag) => (
-                  //   <>tag:{tag.title}</>
-                  // ))}
-                  //     </CardText>
-                  //     <CardText className="card-text div-line">
-                  //       content:{item.content}
-                  //     </CardText>
-                  //   </CardBody>
-                  // </Card>
                 ))}
           </>
         )}
-        {/* </Row> */}
       </Container>
     </>
   );
