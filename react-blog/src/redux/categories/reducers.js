@@ -2,7 +2,7 @@ const initialState = {
   createCategory: { loading: false, error: false, message: null },
   allCategories: {
     loading: false,
-    categories: null,
+    categoriesData: null,
     error: false,
     message: null,
   },
@@ -42,7 +42,7 @@ const categoryReducers = (state = initialState, action) => {
         ...state,
         allCategories: {
           loading: true,
-          categories: null,
+          categoriesData: null,
           error: false,
           message: null,
         },
@@ -52,7 +52,7 @@ const categoryReducers = (state = initialState, action) => {
         ...state,
         allCategories: {
           loading: false,
-          categories: action.categories,
+          categoriesData: action.categoriesData,
           error: false,
           message: null,
         },
@@ -62,7 +62,7 @@ const categoryReducers = (state = initialState, action) => {
         ...state,
         allCategories: {
           loading: false,
-          categories: null,
+          categoriesData: null,
           error: true,
           message: action.message,
         },

@@ -9,9 +9,9 @@ import { Spin } from "antd";
 const TagsTitle = () => {
   const dispatch = useDispatch();
 
-  const { loading, tags } = useSelector((state) => ({
+  const { loading, tagsData } = useSelector((state) => ({
     loading: state.tagReducers.allTags.loading,
-    tags: state.tagReducers.allTags.tags,
+    tagsData: state.tagReducers.allTags.tagsData,
   }));
 
   useEffect(() => {
@@ -24,19 +24,22 @@ const TagsTitle = () => {
 
       <Container fluid className="home-bg">
         <Row className="shadow mx-1 tags-title-container bg-white">
+          <Col sm="12" className="tags-title">
+            Tags
+          </Col>
           <Col xs="12">
             {loading ? (
               <Spin size="large" className="mt-3" />
             ) : (
               <>
-                {tags !== null &&
-                  tags
+                {tagsData !== null &&
+                  tagsData
                     .sort((a, b) =>
                       new Date(a.created_at) > new Date(b.created_at) ? -1 : 0
                     )
-                    .map((item) => (
+                    .map((tags) => (
                       <Button className="tags-title-button">
-                        #{item.title}
+                        #{tags.title}
                       </Button>
                     ))}
               </>

@@ -20,11 +20,9 @@ import { allCategories } from "../redux/categories/actions";
 import { allTags } from "../redux/tags/actions";
 
 const signupSchema = yup.object().shape({
-  title: yup.string().required("Title is a required field."),
-  slug: yup.string().required("Slug is a required field."),
+  title: yup.string().max(15).required("Title is a required field."),
+  slug: yup.string().max(15).required("Slug is a required field."),
   content: yup.string().required("Content is a required field."),
-  // category: yup.string().required("Categories is a required field."),
-  // tag: yup.string().required("Tags is a required field."),
 });
 
 const PostModal = ({ modal, setModal, toggle, action }) => {
@@ -34,11 +32,11 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
 
   const dispatch = useDispatch();
 
-  const { loading, post, categories, tags } = useSelector((state) => ({
+  const { loading, post, categoriesData, tagsData } = useSelector((state) => ({
     loading: state.postReducers.getSinglePost.loading,
     post: state.postReducers.getSinglePost.post,
-    categories: state.categoryReducers.allCategories.categories,
-    tags: state.tagReducers.allTags.tags,
+    categoriesData: state.categoryReducers.allCategories.categoriesData,
+    tagsData: state.tagReducers.allTags.tagsData,
   }));
 
   useEffect(() => {
@@ -47,17 +45,20 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
   }, [dispatch]);
 
   const categoryOption =
-    categories !== null &&
-    categories.map((item) => ({
-      id: item.id,
-      value: item.title,
-      label: item.title,
+    categoriesData !== null &&
+    categoriesData.map((category) => ({
+      id: category.id,
+      value: category.title,
+      label: category.title,
     }));
-  console.log(categories);
 
   const tagOption =
-    tags !== null &&
-    tags.map((item) => ({ id: item.id, value: item.title, label: item.title }));
+    tagsData !== null &&
+    tagsData.map((tag) => ({
+      id: tag.id,
+      value: tag.title,
+      label: tag.title,
+    }));
 
   const userid = localStorage.getItem("userid");
 
@@ -182,7 +183,7 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
                 ref={register}
                 className={errors && errors.tags ? "is-invalid" : ""}
               ></Controller>
-              {errors && errors.tags && (
+              {errors && errors.tagsText && (
                 <span className="text-danger">{errors.tags.message}</span>
               )}
             </FormGroup>

@@ -3,7 +3,6 @@ const initialState = {
   data: null,
   error: false,
   message: null,
-  getSingleUser: { loading: false, user: null, error: false, message: null },
 };
 
 const registrationReducer = (state = initialState, action) => {
@@ -22,36 +21,6 @@ const registrationReducer = (state = initialState, action) => {
         error: true,
         message: action.message,
       };
-    // case "GET_SINGLE_USER_PENDING":
-    //   return {
-    //     ...state,
-    //     getSingleUser: {
-    //       loading: true,
-    //       user: null,
-    //       error: false,
-    //       message: null,
-    //     },
-    //   };
-    // case "GET_SINGLE_USER_SUCCESS":
-    //   return {
-    //     ...state,
-    //     getSingleUser: {
-    //       loading: false,
-    //       user: action.tag,
-    //       error: false,
-    //       message: null,
-    //     },
-    //   };
-    // case "GET_SINGLE_USER_FAILURE":
-    //   return {
-    //     ...state,
-    //     getSingleUser: {
-    //       loading: false,
-    //       user: null,
-    //       error: true,
-    //       message: action.message,
-    //     },
-    //   };
     default:
       return { ...state };
   }

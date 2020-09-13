@@ -26,7 +26,7 @@ export const createPost = (data, setModal) => {
       })
       .catch((error) => {
         dispatch({ type: "CREATE_POST_FAILURE", message: error.message });
-        toast.error("Something went wrong", {
+        toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 5000,
         });
@@ -119,7 +119,7 @@ export const updatePost = (data, id, setModal) => {
       .catch((error) => {
         dispatch({ type: "UPDATE_POST_FAILURE", message: error.message });
 
-        toast.error("Something went wrong", {
+        toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 5000,
         });

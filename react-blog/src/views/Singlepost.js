@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
-import { FaList, FaTags } from "react-icons/fa";
+import { FaList, FaTags, FaArrowLeft } from "react-icons/fa";
 import { Spin } from "antd";
 
 const SinglePost = () => {
@@ -52,14 +52,14 @@ const SinglePost = () => {
                 {post !== null && (
                   <>
                     <Link to="/">
-                      <FaHome id="hometooltip" className="home-icon" />
+                      <FaArrowLeft id="hometooltip" className="home-icon" />
                       <Tooltip
                         placement="bottom"
                         isOpen={tooltipOpen}
                         toggle={toggle}
                         target="hometooltip"
                       >
-                        Home
+                        Back to home
                       </Tooltip>
                     </Link>
 

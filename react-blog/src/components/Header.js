@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <Container fluid className="shadow ">
-      <Navbar className="nav-menu"  light expand="md">
+      <Navbar className="nav-menu" light expand="md">
         <NavbarBrand>
           <img className="blog-logo" src={bloglogo} alt="logo" />
         </NavbarBrand>
@@ -53,7 +53,7 @@ const Header = () => {
           <Nav className="mr-auto ">
             <NavItem>
               <NavLink>
-                <Link className="navbar-item" to="/tag">
+                <Link className="navbar-item" to="/">
                   <FaHome className="mr-1 icon-home" />
                   HOME
                 </Link>

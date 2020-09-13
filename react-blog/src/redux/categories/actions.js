@@ -28,7 +28,7 @@ export const createCategory = (data, setModal) => {
       })
       .catch((error) => {
         dispatch({ type: "CREATE_CATEGORY_FAILURE", message: error.message });
-        toast.error("Something went wrong", {
+        toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 5000,
         });
@@ -49,7 +49,7 @@ export const allCategories = () => {
         },
       })
       .then((res) => {
-        dispatch({ type: "ALL_CATEGORIES_SUCCESS", categories: res.data });
+        dispatch({ type: "ALL_CATEGORIES_SUCCESS", categoriesData: res.data });
       })
       .catch((error) => {
         dispatch({ type: "ALL_CATEGORIES_FAILURE", message: error.message });
@@ -134,7 +134,7 @@ export const updateCategory = (data, id, setModal) => {
       .catch((error) => {
         dispatch({ type: "UPDATE_CATEGORY_FAILURE", message: error.message });
 
-        toast.error("Something went wrong", {
+        toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 5000,
         });

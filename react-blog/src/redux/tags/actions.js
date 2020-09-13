@@ -27,7 +27,7 @@ export const createTag = (data, setModal) => {
       })
       .catch((error) => {
         dispatch({ type: "CREATE_TAG_FAILURE", message: error.message });
-        toast.error("Something went wrong", {
+        toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 5000,
         });
@@ -48,7 +48,7 @@ export const allTags = () => {
         },
       })
       .then((res) => {
-        dispatch({ type: "ALL_TAGS_SUCCESS", tags: res.data });
+        dispatch({ type: "ALL_TAGS_SUCCESS", tagsData: res.data });
       })
       .catch((error) => {
         dispatch({ type: "ALL_TAGS_FAILURE", message: error.message });
@@ -123,8 +123,7 @@ export const updateTag = (data, id, setModal) => {
       })
       .catch((error) => {
         dispatch({ type: "UPDATE_TAG_FAILURE", message: error.message });
-
-        toast.error("Something went wrong", {
+        toast.error(error.message, {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 5000,
         });

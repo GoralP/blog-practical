@@ -1,6 +1,6 @@
 const initialState = {
   createTag: { loading: false, error: false, message: null },
-  allTags: { loading: false, tags: null, error: false, message: null },
+  allTags: { loading: false, tagsData: null, error: false, message: null },
   getSingleTag: { loading: false, tag: null, error: false, message: null },
   deleteTag: { loading: false, error: false, message: null },
   updateTag: { loading: false, error: false, message: null },
@@ -26,14 +26,14 @@ const tagReducers = (state = initialState, action) => {
     case "ALL_TAGS_PENDING":
       return {
         ...state,
-        allTags: { loading: true, tags: null, error: false, message: null },
+        allTags: { loading: true, tagsData: null, error: false, message: null },
       };
     case "ALL_TAGS_SUCCESS":
       return {
         ...state,
         allTags: {
           loading: false,
-          tags: action.tags,
+          tagsData: action.tagsData,
           error: false,
           message: null,
         },
@@ -43,7 +43,7 @@ const tagReducers = (state = initialState, action) => {
         ...state,
         allTags: {
           loading: false,
-          tags: null,
+          tagsData: null,
           error: true,
           message: action.message,
         },

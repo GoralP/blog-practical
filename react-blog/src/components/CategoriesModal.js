@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Button,
   ModalHeader,
@@ -17,8 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCategory, updateCategory } from "../redux/categories/actions";
 
 const signupSchema = yup.object().shape({
-  title: yup.string().required("Title is a required field."),
-  slug: yup.string().required("Slug is a required field."),
+  title: yup.string().max(15).required("Title is a required field."),
+  slug: yup.string().max(15).required("Slug is a required field."),
   description: yup.string().required("Description is a required field."),
 });
 

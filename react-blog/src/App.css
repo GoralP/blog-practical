@@ -17,7 +17,7 @@ body {
 }
 
 .background-image {
-  background-image: url("./images/abc.jpg");
+  background-image: url("./images/auth-bg-image.jpg");
   background-size: cover;
 }
 
@@ -59,7 +59,7 @@ body {
   opacity: 1;
   text-align: center !important;
   visibility: visible;
-  background-image: url("./images/abc.jpg");
+  background-image: url("./images/auth-bg-image.jpg");
   background-size: cover;
 }
 
@@ -129,7 +129,7 @@ input[id="pwd"] {
 .login-user-name {
   color: white !important;
   background-color: rgb(0, 123, 255);
-  font-size: 1.1rem !important;
+  padding: 0.3rem 0.7rem !important;
   font-weight: 600;
 }
 
@@ -199,30 +199,30 @@ input[id="pwd"] {
 @media only screen and (min-width: 320px) and (max-width: 374px) {
   .home-card-image {
     height: 15rem;
-    width: 18rem;
+    width: 17.5rem;
   }
   .line-clamp {
-    width: 99%;
+    width: 98%;
     margin-top: 0.5rem;
   }
 }
 @media only screen and (min-width: 375px) and (max-width: 424px) {
   .home-card-image {
     height: 15rem;
-    width: 21.4rem;
+    width: 20.9rem;
   }
   .line-clamp {
-    width: 99%;
+    width: 98%;
     margin-top: 0.5rem;
   }
 }
 @media only screen and (min-width: 425px) and (max-width: 767px) {
   .home-card-image {
     height: 15rem;
-    width: 24.3rem;
+    width: 23.9rem;
   }
   .line-clamp {
-    width: 99%;
+    width: 98%;
     margin-top: 0.5rem;
   }
 }
@@ -266,6 +266,13 @@ input[id="pwd"] {
   padding: 2rem 0;
 }
 
+.tags-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.1rem;
+  color: rgb(77, 75, 75);
+}
+
 /********************* Table *****************************/
 
 .create-button {
@@ -288,10 +295,9 @@ input[id="pwd"] {
 }
 
 td {
-  /* word-wrap: break-word;
-  word-break: break-all; */
-  vertical-align: middle;
-  width: 100% !important;
+  word-wrap: break-word;
+  word-break: break-all;
+  
 }
 
 @media only screen and (min-width: 320px) and (max-width: 374px) {

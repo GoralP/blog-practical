@@ -108,42 +108,42 @@ const Posts = () => {
                       .sort((a, b) =>
                         new Date(a.created_at) > new Date(b.created_at) ? -1 : 0
                       )
-                      .map((item) => (
+                      .map((post) => (
                         <tr>
-                          <td>{item.title}</td>
-                          <td>{item.slug}</td>
-                          <td>{item.content}</td>
-                          <td>{item.user && item.user.username}</td>
+                          <td>{post.title}</td>
+                          <td>{post.slug}</td>
+                          <td>{post.content}</td>
+                          <td>{post.user && post.user.username}</td>
                           <td>
-                            {item.categories.map((catagory) => (
+                            {post.categories.map((catagory) => (
                               <>{catagory.title}</>
                             ))}
                           </td>
                           <td>
-                            {item.tags.map((tag) => (
+                            {post.tags.map((tag) => (
                               <>{tag.title}</>
                             ))}
                           </td>
                           <td>
                             <Moment format="MMM DD, YYYY">
-                              {item.created_at}
+                              {post.created_at}
                             </Moment>
                           </td>
                           <td>
                             <Moment format="MMM DD, YYYY">
-                              {item.updated_at}
+                              {post.updated_at}
                             </Moment>
                           </td>
 
                           <td>
-                            <FaTrashAlt onClick={() => removePost(item.id)} />
+                            <FaTrashAlt onClick={() => removePost(post.id)} />
 
                             <FaPencilAlt
                               className="ml-3"
                               onClick={() => {
                                 toggle();
                                 setAction("edit");
-                                dispatch(getSinglePost(item.id));
+                                dispatch(getSinglePost(post.id));
                               }}
                             />
                           </td>

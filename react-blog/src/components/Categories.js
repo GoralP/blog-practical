@@ -9,7 +9,6 @@ import {
 } from "../redux/categories/actions";
 import { FaTrashAlt, FaPencilAlt, FaBlackTie } from "react-icons/fa";
 import Moment from "react-moment";
-
 import swal from "sweetalert";
 import { Spin } from "antd";
 
@@ -21,9 +20,9 @@ const Categories = () => {
 
   const dispatch = useDispatch();
 
-  const { loading, categories } = useSelector((state) => ({
+  const { loading, categoriesData } = useSelector((state) => ({
     loading: state.categoryReducers.allCategories.loading,
-    categories: state.categoryReducers.allCategories.categories,
+    categoriesData: state.categoryReducers.allCategories.categoriesData,
   }));
 
   useEffect(() => {
@@ -104,30 +103,30 @@ const Categories = () => {
                 </thead>
 
                 <tbody className="">
-                  {categories !== null &&
-                    categories
+                  {categoriesData !== null &&
+                    categoriesData
                       .sort((a, b) =>
                         new Date(a.created_at) > new Date(b.created_at) ? -1 : 0
                       )
-                      .map((item) => (
+                      .map((category) => (
                         <tr>
-                          <td>{item.title}</td>
-                          <td>{item.slug}</td>
-                          <td>{item.description}</td>
+                          <td>{category.title}</td>
+                          <td>{category.slug}</td>
+                          <td>{category.description}</td>
                           <td>
                             <Moment format="MMM DD, YYYY">
-                              {item.created_at}
+                              {category.created_at}
                             </Moment>
                           </td>
                           <td>
                             <Moment format="MMM DD, YYYY">
-                              {item.updated_at}
+                              {category.updated_at}
                             </Moment>
                           </td>
 
                           <td>
                             <FaTrashAlt
-                              onClick={() => removeCategory(item.id)}
+                              onClick={() => removeCategory(category.id)}
                             />
 
                             <FaPencilAlt
@@ -135,7 +134,7 @@ const Categories = () => {
                               onClick={() => {
                                 toggle();
                                 setAction("edit");
-                                dispatch(getSingleCategory(item.id));
+                                dispatch(getSingleCategory(category.id));
                               }}
                             />
                           </td>

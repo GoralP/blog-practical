@@ -17,8 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createTag, updateTag } from "../redux/tags/actions";
 
 const signupSchema = yup.object().shape({
-  title: yup.string().required("Title is a required field."),
-  slug: yup.string().required("Slug is a required field."),
+  title: yup.string().max(15).required("Title is a required field."),
+  slug: yup.string().max(15).required("Slug is a required field."),
   description: yup.string().required("Description is a required field."),
 });
 

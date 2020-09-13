@@ -16,9 +16,9 @@ const Tags = () => {
 
   const dispatch = useDispatch();
 
-  const { loading, tags } = useSelector((state) => ({
+  const { loading, tagsData } = useSelector((state) => ({
     loading: state.tagReducers.allTags.loading,
-    tags: state.tagReducers.allTags.tags,
+    tagsData: state.tagReducers.allTags.tagsData,
   }));
 
   useEffect(() => {
@@ -100,35 +100,35 @@ const Tags = () => {
                 </thead>
 
                 <tbody className="">
-                  {tags !== null &&
-                    tags
+                  {tagsData !== null &&
+                    tagsData
                       .sort((a, b) =>
                         new Date(a.created_at) > new Date(b.created_at) ? -1 : 0
                       )
-                      .map((item) => (
+                      .map((tag) => (
                         <tr>
-                          <td>{item.title}</td>
-                          <td>{item.slug}</td>
-                          <td>{item.description}</td>
+                          <td>{tag.title}</td>
+                          <td>{tag.slug}</td>
+                          <td>{tag.description}</td>
                           <td>
                             <Moment format="MMM DD, YYYY">
-                              {item.created_at}
+                              {tag.created_at}
                             </Moment>
                           </td>
                           <td>
                             <Moment format="MMM DD, YYYY">
-                              {item.updated_at}
+                              {tag.updated_at}
                             </Moment>
                           </td>
 
                           <td>
-                            <FaTrashAlt onClick={() => removeTag(item.id)} />
+                            <FaTrashAlt onClick={() => removeTag(tag.id)} />
                             <FaPencilAlt
                               className="ml-3"
                               onClick={() => {
                                 toggle();
                                 setAction("edit");
-                                dispatch(getSingleTag(item.id));
+                                dispatch(getSingleTag(tag.id));
                               }}
                             />
                           </td>

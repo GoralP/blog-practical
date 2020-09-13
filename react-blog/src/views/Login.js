@@ -27,10 +27,7 @@ const Home = () => {
   };
 
   return (
-    <Container
-      className="main-container background-image background"
-      fluid={true}
-    >
+    <Container className="background-image background" fluid={true}>
       <Form
         className="form-layout"
         onSubmit={handleSubmit(onSubmit)}
@@ -81,7 +78,10 @@ const Home = () => {
 
         <hr></hr>
         <p className="text-center">
-          Don't have an account? <Link to="/registration">Sign up</Link>
+          Don't have an account?{" "}
+          <Link to="/registration">
+            <span className="font-weight-bold">Sign up</span>
+          </Link>
         </p>
       </Form>
     </Container>

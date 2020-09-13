@@ -9,9 +9,9 @@ import { Spin } from "antd";
 const CategoriesTitle = () => {
   const dispatch = useDispatch();
 
-  const { loading, categories } = useSelector((state) => ({
+  const { loading, categoriesData } = useSelector((state) => ({
     loading: state.categoryReducers.allCategories.loading,
-    categories: state.categoryReducers.allCategories.categories,
+    categoriesData: state.categoryReducers.allCategories.categoriesData,
   }));
 
   useEffect(() => {
@@ -24,20 +24,22 @@ const CategoriesTitle = () => {
 
       <Container fluid className="home-bg">
         <Row className="shadow mx-1 tags-title-container bg-white">
-          <Col sm="12">Categories</Col>
+          <Col sm="12" className="tags-title">
+            Categories
+          </Col>
           <Col sm="12">
             {loading ? (
               <Spin size="large" className="mt-3" />
             ) : (
               <>
-                {categories !== null &&
-                  categories
+                {categoriesData !== null &&
+                  categoriesData
                     .sort((a, b) =>
                       new Date(a.created_at) > new Date(b.created_at) ? -1 : 0
                     )
-                    .map((item) => (
+                    .map((category) => (
                       <Button className="tags-title-button">
-                        #{item.title}
+                        #{category.title}
                       </Button>
                     ))}
               </>

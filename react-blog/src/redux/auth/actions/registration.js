@@ -22,31 +22,13 @@ export const registration = (data) => {
       })
       .catch((error) => {
         dispatch({ type: "REGISTRATION_FAILURE", message: error.message });
-
-        toast.error("Something went wrong", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000,
-        });
+        error.response.data.message.map((error) =>
+          error.messages.map((item) =>
+            toast.error(item.message, {
+              position: toast.POSITION.TOP_CENTER,
+            })
+          )
+        );
       });
   };
 };
-
-// export const getSingleUser = (id) => {
-//   const getToken = localStorage.getItem("token");
-//   return (dispatch) => {
-//     dispatch({ type: "GET_SINGLE_USER_PENDING" });
-
-//     axios
-//       .get(`https://infblogdemo.herokuapp.com/auth/local/register/${id}`, {
-//         headers: {
-//           Authorization: `Bearer ${getToken}`,
-//         },
-//       })
-//       .then((res) => {
-//         dispatch({ type: "GET_SINGLE_USER_SUCCESS", user: res.data });
-//       })
-//       .catch((error) => {
-//         dispatch({ type: "GET_SINGLE_USER_FAILURE", message: error.message });
-//       });
-//   };
-// };
