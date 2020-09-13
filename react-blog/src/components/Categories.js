@@ -7,7 +7,7 @@ import {
   getSingleCategory,
   deleteCategory,
 } from "../redux/categories/actions";
-import { FaTrashAlt, FaPencilAlt, FaBlackTie } from "react-icons/fa";
+import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 import Moment from "react-moment";
 import swal from "sweetalert";
 import { Spin } from "antd";

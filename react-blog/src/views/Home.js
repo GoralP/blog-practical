@@ -11,8 +11,6 @@ import { FaUser, FaCalendarAlt, FaList, FaTags } from "react-icons/fa";
 const Home = () => {
   const dispatch = useDispatch();
 
-  const token = localStorage.getItem("token");
-
   const { loading, posts } = useSelector((state) => ({
     loading: state.postReducers.allPosts.loading,
     posts: state.postReducers.allPosts.posts,
@@ -48,7 +46,7 @@ const Home = () => {
                       <Row>
                         <Col sm="2">
                           <img
-                            // alt="Blog Image"
+                            alt="Blog"
                             className="home-card-image"
                             src={
                               post.featured_media &&

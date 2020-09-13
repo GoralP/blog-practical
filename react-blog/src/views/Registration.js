@@ -5,7 +5,6 @@ import { registration } from "../redux/auth/actions/registration";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
-import { useHistory, Redirect } from "react-router-dom";
 
 const signupSchema = yup.object().shape({
   username: yup.string().required("Username is a required field."),

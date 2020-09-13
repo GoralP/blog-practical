@@ -7,7 +7,6 @@ import {
   CardTitle,
   CardImg,
   Row,
-  Button,
   Tooltip,
 } from "reactstrap";
 import { Header } from "../components";
@@ -16,7 +15,7 @@ import { getSinglePost } from "../redux/posts/actions";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
+
 import { FaList, FaTags, FaArrowLeft } from "react-icons/fa";
 import { Spin } from "antd";
 

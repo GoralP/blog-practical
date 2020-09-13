@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Table, Button, Container, Row, Card, Col } from "reactstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 import { Header } from ".";
 import { useDispatch, useSelector } from "react-redux";
 import { allCategories } from "../redux/categories/actions";

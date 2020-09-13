@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Container, Row, Col, Tooltip } from "reactstrap";
+import { Table, Button, Container, Row, Col } from "reactstrap";
 import { Header, TagsModal } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allTags, getSingleTag, deleteTag } from "../redux/tags/actions";

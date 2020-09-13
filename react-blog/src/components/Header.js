@@ -111,7 +111,7 @@ const Header = () => {
               </Dropdown>
             ) : (
               <Link to="/login">
-                <Button>Sign in</Button>
+                <Button className="create-button">Sign in</Button>
               </Link>
             )}
           </NavbarText>

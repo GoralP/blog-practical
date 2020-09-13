@@ -13,8 +13,6 @@ export const registration = (data) => {
           type: "REGISTRATION_SUCCESS",
         });
 
-        console.log(res.data);
-
         toast.success("Registration successfully done!!", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 7000,

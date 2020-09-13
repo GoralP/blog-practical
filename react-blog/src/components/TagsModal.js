@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Button,
   ModalHeader,
@@ -35,7 +35,6 @@ const TagsModal = ({ modal, setModal, toggle, action }) => {
   }));
 
   const onSubmit = (data) => {
-    console.log(data);
     action === "create"
       ? dispatch(createTag(data, setModal))
       : dispatch(updateTag(data, tag.id, setModal));

@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { Table, Button, Container, Row, Card, Col } from "reactstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 import { Header } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allTags } from "../redux/tags/actions";
-
 import { Spin } from "antd";
 
 const TagsTitle = () => {

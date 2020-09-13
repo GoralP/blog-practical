@@ -35,8 +35,6 @@ export const createPost = (data, setModal) => {
 };
 
 export const allPosts = () => {
-  const getToken = localStorage.getItem("token");
-
   return (dispatch) => {
     dispatch({ type: "ALL_POSTS_PENDING" });
 
@@ -52,16 +50,11 @@ export const allPosts = () => {
 };
 
 export const getSinglePost = (id) => {
-  const getToken = localStorage.getItem("token");
   return (dispatch) => {
     dispatch({ type: "GET_SINGLE_POST_PENDING" });
 
     axios
-      .get(`https://infblogdemo.herokuapp.com/posts/${id}`, {
-        headers: {
-          Authorization: `Bearer ${getToken}`,
-        },
-      })
+      .get(`https://infblogdemo.herokuapp.com/posts/${id}`)
       .then((res) => {
         dispatch({ type: "GET_SINGLE_POST_SUCCESS", post: res.data });
       })

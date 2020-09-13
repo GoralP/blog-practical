@@ -36,17 +36,11 @@ export const createTag = (data, setModal) => {
 };
 
 export const allTags = () => {
-  const getToken = localStorage.getItem("token");
-
   return (dispatch) => {
     dispatch({ type: "ALL_TAGS_PENDING" });
 
     axios
-      .get("https://infblogdemo.herokuapp.com/tags", {
-        headers: {
-          Authorization: `Bearer ${getToken}`,
-        },
-      })
+      .get("https://infblogdemo.herokuapp.com/tags")
       .then((res) => {
         dispatch({ type: "ALL_TAGS_SUCCESS", tagsData: res.data });
       })

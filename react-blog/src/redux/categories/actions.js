@@ -1,6 +1,5 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import swal from "sweetalert";
 
 export const createCategory = (data, setModal) => {
   const getToken = localStorage.getItem("token");
@@ -37,17 +36,11 @@ export const createCategory = (data, setModal) => {
 };
 
 export const allCategories = () => {
-  const getToken = localStorage.getItem("token");
-
   return (dispatch) => {
     dispatch({ type: "ALL_CATEGORIES_PENDING" });
 
     axios
-      .get("https://infblogdemo.herokuapp.com/categories", {
-        headers: {
-          Authorization: `Bearer ${getToken}`,
-        },
-      })
+      .get("https://infblogdemo.herokuapp.com/categories")
       .then((res) => {
         dispatch({ type: "ALL_CATEGORIES_SUCCESS", categoriesData: res.data });
       })
