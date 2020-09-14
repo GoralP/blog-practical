@@ -5,7 +5,7 @@ import { login } from "../redux/auth/actions/login";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
-import { useHistory,  Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import logo from "../images/logo1.jpg";
 
 const signupSchema = yup.object().shape({
@@ -23,7 +23,6 @@ const Home = () => {
 
   const onSubmit = (data) => {
     dispatch(login(data.username, data.password, history));
-    
   };
 
   return (
